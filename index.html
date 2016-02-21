@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+<!-- <link rel="stylesheet" href="/css/main.css"> -->
+</head>
+
+<h3> Kwadraten: </h3>
+
+<p>
+    Maximum grondgetal:
+    <input id="mgg" type="text" value="">
+  
+   <button id="giveQuestion"> Geef me een vraag </button>
+</p>
+ 
+<!--
+  <div>
+    <h3>Questions</h3>
+    <label>
+      <input type="checkbox" class="radio" value="1" name="fooby[1][]" />Yes</label>
+    <label>
+      <input type="checkbox" class="radio" value="1" name="fooby[1][]" />wortels</label>
+    <label>
+      <input type="checkbox" class="radio" value="1" name="fooby[1][]" />kwadraten</label>
+  </div>
+-->
+
+
+  
+<p id="Vraag"></p>
+
+<p>
+    Antwoord:
+    <input id="ans" type="text" value="">
+    
+    <button id="subQuestion"> Check antwoord </button>
+</p>
+
+
+<p id="cAnswer">  </p>
+
+<p id="output"></p>
+
+
+<h3> Vierkantswortels: </h3>
+
+<p>
+    Maximum grondgetal:
+    <input id="mggw" type="text" value="">
+  
+   <button id="giveQuestionw"> Geef me een vraag </button>
+</p>
+ 
+<p id="Vraagw"></p>
+
+<p>
+    Antwoord:
+    <input id="answ" type="text" value="">
+    
+    <button id="subQuestionw"> Check antwoord </button>
+</p>
+
+
+<p id="cAnswerw">  </p>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+// Machten
+
+var gg;
+var ans;
+var randomNum;
+
+$().ready(function() {
+
+  $("#mgg")
+    .keyup(function() {
+      gg = $("#mgg").val();
+    })
+
+    
+      $("#ans")
+    .keyup(function() {
+      ans = $("#ans").val();
+    })
+    
+})
+
+function reply_click () {
+ function randomIntFromInterval(min,max){
+     return Math.floor(Math.random()*(max-min+1)+min);
+} 
+  randomNum=randomIntFromInterval(0,gg)
+$("#Vraag").text("Kwadraat van " + randomNum + "." );
+
+}
+
+function check_answer(){
+if (ans==Math.pow(randomNum,2)){
+$("#cAnswer").text("Juist!");
+// return true;
+}
+else{ console.log(ans==Math.pow(randomNum,2));
+$("#cAnswer").text("Fout");
+// return false;
+}
+}
+$("#giveQuestion").click(reply_click);
+$("#subQuestion").click(check_answer);
+
+// Vierkantswortels
+var ggw;
+var answ;
+var randomNumw;
+
+$().ready(function() {
+
+  $("#mggw")
+    .keyup(function() {
+      ggw = $("#mggw").val();
+    })
+
+    
+      $("#answ")
+    .keyup(function() {
+      answ = $("#answ").val();
+    })
+    
+})
+
+function reply_clickw () {
+ function randomIntFromIntervalw(min,max){
+     return Math.pow(Math.floor(Math.random()*(max-min+1)+min),2);
+} 
+  randomNumw=randomIntFromIntervalw(0,ggw)
+$("#Vraagw").text("Vierkantswortel van " + randomNumw + "." );
+
+}
+
+function check_answerw(){
+if (answ==Math.sqrt(randomNumw)){
+$("#cAnswerw").text("Juist!");
+// return true;
+}
+else{
+$("#cAnswerw").text("Fout");
+// return false;
+}
+}
+$("#giveQuestionw").click(reply_clickw);
+$("#subQuestionw").click(check_answerw);
+
+
+</script>
+</body>
+<html>
